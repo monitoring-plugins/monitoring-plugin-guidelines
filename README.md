@@ -47,7 +47,9 @@ given as _environment variables_ and it MAY accept them in a configuration file 
 In general positional arguments are strongly discouraged.
 
 Some arguments MUST have this predetermined meaning, if they are used:
+
 | Argument (long) | Argument (short version, optional) | Argument | Meaning | optional | can be given multiple times |
+| --- | --- | --- | --- | --- | --- |
 | --help | -h | None | "Triggers the help functionality of the _Monitoring Plugin_, showing the individual parameters and their meaning, examples for usage of the _Monitoring Plugin_ and general remarks about the how and why of the _Monitoring Plugin_. SHOULD overwrite all other options, meaning, they are ignored if `--help` is given. The _Monitoring Plugin_ SHOULD exit with state UNKNOWN (3). | no | -- (makes no difference) |
 | --version | -V | None | Shows the version of the _Monitoring Plugin_ to allow users to report errors better and therefore help them and the developers. The _Monitoring Plugin_ SHOULD exit with state UNKNOWN (3). | no | -- (makes no difference) |
 | --timeout | -t | Integer (meaning seconds) or a time duration string | Sets a limit for the time which a _Monitoring Plugin_ is given to execute. This is there to enforce the abortion of the test and improve the reaction time of the _Monitoring System_ (e.g. in bad network conditions it might be helpful to abort the test prematurely and inform the user about that, than trying forever to do something which won't succeed. Or if soft real time constraints are present, a result might be worthless altogether after some time). A sane default is probably 30 seconds, although this depends heavily on the scenario and should be given a thought during development. If the execution is terminated by this timeout, it should exit with state UNKNOWN (3) and (if possible) give some helpful output in which stage of the execution the timeout occurred. | no | no |
@@ -231,6 +233,7 @@ where:
 ### Examples
 
 | Range definition | Exceeds threshold if x...|
+| --- | --- |
 | 10 | < 0 or > 10, (outside the range of {0 .. 10}) |
 | 10: | < 10, (outside {10 .. ∞}) |
 | ~:10 | > 10, (outside the range of {-∞ .. 10}) |
